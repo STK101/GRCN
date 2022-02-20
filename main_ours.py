@@ -57,7 +57,7 @@ def lr_decay(optimizer):
 parser = argparse.ArgumentParser(description='PyTorch Enhance NC by GC Model')
 parser.add_argument('--dataset', type=str, default='Cora',
                     help='dataset to use, [Cora, CiteSeer, PubMed]')
-parser.add_argument("--sample", type=float, default=1.0,
+parser.add_argument("--sample", type=float, default= 0,
                     help="sample ratio of edges")
 parser.add_argument('--complete', type=str, default='None',
                     help='method for graph completion, [None, Graph, Both]')
@@ -150,7 +150,7 @@ deg_sum_all, deg_correct_all = 0, 0
 
 
 sampled_edge_index = dataprocess.sample_edge(ori_edge_index, ratio=sample_ratio, seed=sample_seed)
-logging.info('Sub-sampled {} #edges {}'.format(dataset, int(sampled_edge_index.shape[1]/2)))
+logging.info('Sub-sampled {} #edges {}'.format(dataset, int(0))
 
 data = dataset[0]
 # data.name = args.dataset
