@@ -22,7 +22,9 @@ class Data(object):
 
 # sample partial edges
 def sample_edge(edge_index, ratio, seed=123):
-    '''
+    if (ratio == 0):
+        sampled_edge_index = torch.Tensor()
+        return sampled_edge_index
     # sample from half side of the symmetric adjacency matrix
     half_edge_index = []
     for i in range(edge_index.shape[1]):
@@ -33,8 +35,7 @@ def sample_edge(edge_index, ratio, seed=123):
     num_edge = half_edge_index.shape[1]
     samples = np.random.choice(num_edge, size=int(ratio*num_edge), replace=False)
     sampled_edge_index = half_edge_index[:, samples]
-    sampled_edge_index = torch.cat([sampled_edge_index, sampled_edge_index[torch.LongTensor([1,0])]], dim=1)'''
-    sampled_edge_index = torch.Tensor()
+    sampled_edge_index = torch.cat([sampled_edge_index, sampled_edge_index[torch.LongTensor([1,0])]], dim=1)
     return sampled_edge_index
 
 
