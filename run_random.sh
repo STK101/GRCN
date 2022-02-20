@@ -7,7 +7,7 @@ DATASET=$3
 MODELS=$2
 ARGS="$4 $5 $6"
 # edge sampling ratio
-SAMPLES=(0.1)
+SAMPLES=(0)
 # number of training instances per class
 TN=("20")
 # hidden dimensions for graph revision module
