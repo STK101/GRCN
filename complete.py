@@ -89,7 +89,10 @@ class Complete(object):
             self.norm_adj_part = normalize(self.loop_adj_part)
         else:
             loop_edge_index = torch.stack([torch.arange(data.num_nodes), torch.arange(data.num_nodes)])
-            self.loop_adj_part = torch.cat([sampled_edge_index, loop_edge_index], dim=1)
+            if (len(sampled_edge_index) == 0):
+                self.loop_adj_part = loop_edge_index
+            else:
+                self.loop_adj_part = torch.cat([sampled_edge_index, loop_edge_index], dim=1)
 
     def complete_graph(self, method, compl_param):
         self.model.eval()
