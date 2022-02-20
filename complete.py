@@ -19,6 +19,8 @@ EOS = 1e-10
 def convert_edge2adj(edge_index, num_nodes):
     # float type
     mat = torch.zeros((num_nodes, num_nodes))
+    if (len(edge_index) == 0):
+        return mat
     for i in range(edge_index.shape[1]):
         x, y = edge_index[:, i]
         mat[x, y] = mat[y, x] = 1
@@ -26,6 +28,8 @@ def convert_edge2adj(edge_index, num_nodes):
 
 # generate normalized random walk adjacency matrix
 def normalize(adj):
+    if (torch.norm(adj) == 0):
+        return adj
     inv_sqrt_degree = 1. / torch.sqrt(adj.sum(dim=1, keepdim=False))
     inv_sqrt_degree[inv_sqrt_degree == float("Inf")] = 0
     return inv_sqrt_degree[:, None] * adj * inv_sqrt_degree[None, :]
