@@ -2,7 +2,7 @@ import torch
 import torch.nn.functional as F
 
 params_fixed={
-    "sample" : 0,
+    "sample" : 0.1,
     "nhid": 32, # number of hidden units per layer
     "dropout": 0.5,
     "F": torch.relu,
