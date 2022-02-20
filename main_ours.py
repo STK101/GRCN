@@ -150,7 +150,10 @@ deg_sum_all, deg_correct_all = 0, 0
 
 
 sampled_edge_index = dataprocess.sample_edge(ori_edge_index, ratio=sample_ratio, seed=sample_seed)
-logging.info('Sub-sampled {} #edges {}'.format(dataset, int(0)))
+if (sample_ratio == 0):
+    logging.info('Sub-sampled {} #edges {}'.format(dataset, 0))
+else :
+    logging.info('Sub-sampled {} #edges {}'.format(dataset, int(sampled_edge_index.shape[1]/2)))
 
 data = dataset[0]
 # data.name = args.dataset
