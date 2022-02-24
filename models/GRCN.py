@@ -119,6 +119,7 @@ class Model(torch.nn.Module):
         Adj.requires_grad = False
         node_embeddings = self._node_embeddings(input, Adj, self.sparse)
         Adj_new = self.cal_similarity_graph(node_embeddings)
+        self.Adj_new = Adj_new
 
         if not self.sparse:
             Adj_new = self._sparse_graph(Adj_new, self.K, self.sparse)
