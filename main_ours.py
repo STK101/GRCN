@@ -204,6 +204,6 @@ for epoch in range(args.epochs):
             final_test_acc = test_acc
             logging.info("Update best val acc {:.3f} test vcc: {:.3f}".format(
                     best_val_acc, test_acc))
-print(complete_model.loop_adj_part)
+print(model.Adj_new)
 logging.info('Classification Val Acc: {:.2f}%'.format(best_val_acc*100))
 logging.info('Classification Test Acc: {:.2f}%'.format(final_test_acc*100))
