@@ -91,7 +91,7 @@ parser.add_argument('--patience', type=int, default=5,
                     help='patience for early stopping')
 parser.add_argument('--train_num', type=int, default=20,
                     help='number of training labels per class')
-parser.add_argument('--run_times', type=int, default=10,
+parser.add_argument('--run_times', type=int, default=1,
                     help='Independent run times')
 
 args = parser.parse_args()
