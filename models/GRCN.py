@@ -119,7 +119,6 @@ class Model(torch.nn.Module):
     def forward(self, input, Adj):
         Adj.requires_grad = False
         node_embeddings = self._node_embeddings(input, Adj, self.sparse)
-        self.embedding = node_embeddings
         Adj_new = self.cal_similarity_graph(node_embeddings)
         self.Adj_new = Adj_new
 
@@ -136,5 +135,5 @@ class Model(torch.nn.Module):
         x = self.conv1(input, Adj_new, self.sparse)
         x = F.dropout(self.F(x), training=self.training, p=self.dropout)
         x = self.conv2(x, Adj_new, self.sparse)
-
+        self.embedding = x
         return F.log_softmax(x, dim=1)
