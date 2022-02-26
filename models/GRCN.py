@@ -39,6 +39,7 @@ class Model(torch.nn.Module):
         self.reduce = args.reduce
         self.sparse = args.sparse
         self.norm_mode = "sym"
+        self.embedding = None
 
     def init_para(self):
         self.conv1.init_para()
@@ -118,6 +119,7 @@ class Model(torch.nn.Module):
     def forward(self, input, Adj):
         Adj.requires_grad = False
         node_embeddings = self._node_embeddings(input, Adj, self.sparse)
+        self.embedding = node_embeddings
         Adj_new = self.cal_similarity_graph(node_embeddings)
         self.Adj_new = Adj_new
 
