@@ -158,7 +158,7 @@ else :
 data = dataset[0]
 # data.name = args.dataset
 dataprocess.random_split(data, args.dataseed, args)
-torch.save(data, 'our_citeseer.pt')
+torch.save(data, 'our_cora_2.pt')
 model = eval(args.complete).Model(data.num_nodes, dataset.num_features, dataset.num_classes, device, args).to(device)
 
 optimizer_base = torch.optim.Adam(model.base_parameters(), lr=args.lr, weight_decay=args.wd)
@@ -204,6 +204,7 @@ for epoch in range(args.epochs):
             final_test_acc = test_acc
             logging.info("Update best val acc {:.3f} test vcc: {:.3f}".format(
                     best_val_acc, test_acc))
-torch.save(model.Adj_new, 'final_adj_citeseer.pt')
+torch.save(model.Adj_new, 'final_adj_cora.pt')
+torch.save(model.embedding, 'embedding_cora.pt')
 logging.info('Classification Val Acc: {:.2f}%'.format(best_val_acc*100))
 logging.info('Classification Test Acc: {:.2f}%'.format(final_test_acc*100))
