@@ -24,7 +24,7 @@ params_random={
     "lr": 5e-3, # learning rate for node classification
     "wd": 5e-3, # weight decay for node classification
     "lr_graph": 1e-3, # learning rate for graph modification
-    "epochs": 300, # epoch number for model training
+    "epochs": 100, # epoch number for model training
     "log_epoch": 10,
     "normalize": True,
     "batch_size": 20000,
